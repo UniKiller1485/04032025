@@ -4,7 +4,15 @@ export default function NewTask({setTasks}){
 
 
 function addTask() {
-    setTasks((oldTasks) => {return [...oldTasks, {task: task, done: false}] });
+
+if(task.trim().length == 0) return;
+if (task.trim().length > 60) return;
+
+
+    setTasks((oldTasks) => {
+        return [
+        ...oldTasks, {id: Date.now(), task: task.trim(), done: false}
+    ]});
 }
 
 
